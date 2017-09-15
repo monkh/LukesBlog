@@ -1,0 +1,1023 @@
+﻿
+@{
+    ViewBag.Title = "Projects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="container">
+    <h1>Projects</h1>
+    <div class="content">
+        <h2>Marshalling Bank Calc System - Leadec</h2>
+        <br>
+        <p>Tech Used: <br>ASP.NET C#, ElasticSearch, Bootstrap, HTML5, JS</p>
+        <span>
+            <br>
+            Operations team required a visualisation of their banks for longest time and our third party software vendor were unable to provide this due to work load.
+            <br>
+            <br>
+            I investigated how hard it would be to create visualisations with JS Librarys such as D3.js, 
+            ChartJS these seemed doable but would have taken quite significant ammount of time to produce.
+            I came across ElasticSearch and Kibana, which simplified the creation of visualisations that 
+            potentially even the operations team could create them. 
+            <br>
+            <br>
+            I created a few prototype graphs beats packages and showed them to my manager when we came up
+            with the idea to create a web hub to access our diffrent networked services from one location.
+            and we included kibana dashboards emedded in the intranet project for the inital version.
+            <br>
+            <br>
+            This worked extremely well and management have been pleased with the proffesionalism of the 
+            charts. 
+            <br>
+        </span>
+        <div class="gallery">
+            <div class="pic">
+                <p class="label">An example of a modal</p>
+                <img src="~/Content/images/marshalexample1.png" alt="An example of a modal" />
+            </div>
+            <div class="pic">
+                <p class="label">An example dashboard</p>
+                <img src="~/Content/images/marshalexample2.png" alt="An example dashboard" />
+            </div>
+            <div class="pic">
+                <p class="label">An example dashboard</p>
+                <img src="~/Content/images/marshalexample3.png" alt="An example dashboard" />
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h2>Personal Website</h2>
+        <br>
+        <p>Tech Used: <br>ASP.NET C#, HTML5, JS</p>
+
+        <span>
+            <br>
+            Website you are looking at right now initally started out as a simple project just
+            using Jade (Now called pug), SCSS I initally planned it to use flask backend but
+            started hearing a lot of good things about NodeJS so I made the project with backend
+            using NodeJS.
+            <br>
+            <br>
+            I tried to upgrade the project to a React project but had to cut this short fairly
+            quickly due to work projects which I wanted to give 110% on them.
+            <br>
+            Those projects have recently come to a completetion so I've picked it up again and
+            since one of the projects I had worked on for work was using ASP.NET I decided to
+            convert project to ASP.NET.
+            <br>
+            <br>
+            A goal of the inital version of the website was to use no CSS framework and no
+            JS librarys. I think next version of this will include a CSS framework and in
+            I can see myself using a JS framework.
+            <br>
+        </span>
+    </div>
+
+    <div class="content">
+        <h2>Powershell Projects</h2>
+        <br>
+        <div class="content">
+            <h3>Get-MAS.ps1</h3>
+            <br>
+            <code>
+                <pre>
+# Get-Mas - Gets a list off all mas files in a directory
+
+function Get-Mas ($dir = "***", $numofrecords = 5) # change $dir on live
+{
+gci $dir -File `
+|? {$_.Name -like "Voith*"} `
+| Sort-Object LastWriteTime `
+| select -Last $numofrecords `
+| Select-Object Name, `
+LastWriteTime, `
+@@{ Name="CSN"; Expression={ (cat "$dir\$_").Split(",")[1].Substring((cat "$dir\$_").Split(",")[1].Length - 6, 6) } }, `
+@@{ Name="Sender2"; Expression={ [convert]::ToInt32((cat "$dir\$_").Split(",")[2]) } },  `
+@@{ Name="SONO"; Expression={ (cat "$dir\$_").Split(",")[0] } }, `
+@@{ Name="FullPath"; Expression={ "$dir$_" } } `
+}
+
+                </pre>
+                </code>
+
+                <br>
+                Get-MAS script was one of my most useful scripts as an OSC at Leadec our this
+                was created before we had a database setup there and people would ask use where
+                was Chassis X between and and this would list files in that datastore and get
+                their CSN-ID, Sender2ID, SONO and Path and create a similiar output to a
+                Get-ChildItem but with this additional information. This became a pivotal script
+                to other scripts created later on.
+                <br>
+                <br>
+        </div>
+
+        <div class="content">
+            <h3>AutoReports</h3>
+
+            <br>
+            <code>
+                <pre>
+#
+# SSRS-PrintReport.ps1
+#
+
+function SSRS-Report-OutputPDF([string]$param1Name, [string]$param1Value, [string]$param2Name, [string]$param2Value, [string]$ReportName, [string]$OutputFile="E:\SQL\output.pdf") {
+    # Create a proxy to the SSRS server and give it the namespace of 'RS' to use for
+    # instantiating objects later.  This class will also be used to create a report
+    # object.
+    $reportServerURI = "http://****/ReportExecution2005.asmx?WSDL"
+    $RS = New-WebServiceProxy -Class 'RS' -NameSpace 'RS' -Uri $reportServerURI -UseDefaultCredential
+    $RS.Url = $reportServerURI
+
+    # Set up some variables to hold referenced results from Render
+    $deviceInfo = "&lt;DeviceInfo&gt;&lt;NoHeader&gt;True&lt;/NoHeader&gt;&lt;/DeviceInfo&gt;"
+    $extension = ""
+    $mimeType = ""
+    $encoding = ""
+    $warnings = $null
+    $streamIDs = $null
+
+    # Next we need to load the report. Since Powershell cannot pass a null string
+    # (it instead just passses ""), we have to use GetMethod / Invoke to call the
+    # function that returns the report object.  This will load the report in the
+    # report server object, as well as create a report object that can be used to
+    # discover information about the report.  It's not used in this code, but it can
+    # be used to discover information about what parameters are needed to execute
+    # the report.
+    $reportPath = $ReportName
+    $Report = $RS.GetType().GetMethod("LoadReport").Invoke($RS, @@($reportPath, $null))
+
+    # Report parameters are handled by creating an array of ParameterValue objects.
+    $parameters = @@()
+
+    $parameters += New-Object RS.ParameterValue
+    $parameters[0].Name  = $param1Name
+    $parameters[0].Value = $param1Value
+
+    $parameters += New-Object RS.ParameterValue
+    $parameters[1].Name  = $param2Name
+    $parameters[1].Value = $param2Value
+
+    # Add the parameter array to the service.  Note that this returns some
+    # information about the report that is about to be executed.
+    $RS.SetExecutionParameters($parameters, "en-us") > $null
+
+    # Render the report to a byte array.  The first argument is the report format.
+    # The formats I've tested are: PDF, XML, CSV, WORD (.doc), EXCEL (.xls),
+    # IMAGE (.tif), MHTML (.mhtml).
+    $RenderOutput = $RS.Render('PDF',
+        $deviceInfo,
+        [ref] $extension,
+        [ref] $mimeType,
+        [ref] $encoding,
+        [ref] $warnings,
+        [ref] $streamIDs
+    )
+
+    # Convert array bytes to file and write
+    $Stream = New-Object System.IO.FileStream($OutputFile), Create, Write
+    $Stream.Write($RenderOutput, 0, $RenderOutput.Length)
+    $Stream.Close()
+}
+
+                </pre>
+            </code>
+
+            <br>
+            This script was adaptered from a script that I found on stackoverflow which I
+            only changed a little but created an additional script which processed the output.
+            <br>
+            <br>
+            <code>
+                <pre>
+#
+# AutoSSRSReports.ps1
+#
+
+. ***\Get-Mas.ps1
+. ***\SSRS-PrintReport.ps1
+
+function logerror ($message) {
+    $message = "$(Get-Date -Format "dd/MM/yyyy HH:mm:ss") - $message"
+    Out-File -InputObject "$message" -FilePath ****\AutoReports\AutoSSRSReports\errorlog.txt -Append
+}
+
+function PrintCockpits() {	
+
+    $Error.Clear()
+    try
+    {
+        $Reports = Import-Clixml ****\CockpitReport_data.xml
+    }
+    catch 
+    {
+        logerror "17: Error occurred Importing xml data"
+    }
+
+    try
+    {
+        if(Test-Path $Reports.OutputFile)
+        {
+            Remove-Item $Reports.OutputFile
+        }
+    }
+    catch
+    {
+        logerror "26: File $($Reports.OutputFile) access denied"
+    }
+
+    try
+    {
+        # Latest CSN
+        $getmas = Get-Mas -numofrecords 2
+    }
+    catch
+    {
+        logerror "27: Error occurred getting mas data"
+    }
+
+    if ( $getmas[0].Sender2 -eq $Reports.param2Value -1) {
+        logerror "No New Files last mas num: $($getmas[0].Sender2) ___ looking for mas num: $($Reports.param2Value) "
+        Write-Error "No new files"
+    }
+
+
+        #produce pdf
+    if(!$Error) 
+    {
+        try
+        {
+            $(Get-WmiObject -ComputerName . -Class Win32_Printer -Filter "Name='$($Reports.OutputPrinter)'").SetDefaultPrinter()
+
+            $previousLastCSN = $("{0:000000}" -f $( $Reports.param2Value ))
+            logerror "Attempting to print $($Reports.ReportName + " - " + $Reports.param1Name + " = " + $previousLastCSN + " - " + $Reports.param2Name + " = " + $("{0:000000}" -f $( $getmas[0].Sender2 )) )"
+
+            if ( $getmas[0].Sender2 -lt $Reports.param2Value ) 
+            {
+                logerror "MAS Sender2 less than previous detected"
+                logerror "param1Name $($Reports.param1Name) param1Value $previousLastCSN param2Name $($Reports.param2Name) param2Value $("{0:000000}" -f $( "9999" )) "
+                
+                SSRS-Report-OutputPDF -param1Name $Reports.param1Name `
+                                        -param1Value $previousLastCSN `
+                                        -param2Name $Reports.param2Name `
+                                        -param2Value $("{0:000000}" -f $( "9999" )) `
+                                        -ReportName $Reports.ReportName `
+                                        -OutputFile "$($Reports.OutputFile)"
+                Start-Sleep -Seconds 5
+
+                #Print reports
+                Start-Process -FilePath $Reports.OutputFile -Verb Print | %{sleep 10;$_} | kill
+
+
+
+                Start-Sleep -Seconds 10
+                logerror "param1Name $($Reports.param1Name) param1Value 000000 param2Name $($Reports.param2Name) param2Value $("{0:000000}" -f $( $getmas[0].Sender2 ))"
+                
+                SSRS-Report-OutputPDF -param1Name $Reports.param1Name `
+                                        -param1Value "000000" `
+                                        -param2Name $Reports.param2Name `
+                                        -param2Value $("{0:000000}" -f $( $getmas[0].Sender2 )) `
+                                        -ReportName $Reports.ReportName `
+                                        -OutputFile $Reports.OutputFile
+                Start-Sleep -Seconds 5
+
+                #Print reports
+                Start-Process -FilePath $Reports.OutputFile -Verb Print | %{sleep 10;$_} | kill
+
+
+            } 
+            else 
+            {
+                logerror "1"
+                SSRS-Report-OutputPDF -param1Name $Reports.param1Name `
+                                        -param1Value $previousLastCSN `
+                                        -param2Name $Reports.param2Name `
+                                        -param2Value $("{0:000000}" -f $( $getmas[0].Sender2 )) `
+                                        -ReportName $Reports.ReportName `
+                                        -OutputFile $Reports.OutputFile
+                Start-Sleep -Seconds 5
+                logerror "2"
+                #Print reports
+                # TODO
+                Start-Process -FilePath $Reports.OutputFile -Verb Print | %{sleep 10;$_} | kill
+                logerror "3"
+            }
+        } 
+        catch 
+        { 
+            logerror ""
+            logerror "88: Error occured producing report" 
+            logerror $Reports
+            logerror $(Test-Connection elpx0150 -Count 1)
+        }
+    }
+    #update data
+    if(!$Error) 
+    {
+        logerror "Updating xml data"
+        $Reports.param2Value = $getmas[0].Sender2 + 1
+
+        $Reports | Export-Clixml "****\CockpitReport_data.xml"
+    }
+    
+}
+
+
+function Main(){
+    if (Test-Connection **** -Count 1)
+    {
+        PrintCockpits
+    }
+    else
+    {
+        logerror "Check network connection"
+    }
+}
+
+[console]::beep(1900,400)
+[console]::beep(1900,400)
+[console]::beep(1900,400)
+Main
+[console]::beep(1200,100)
+[console]::beep(1200,100)
+[console]::beep(1200,100)
+Out-File -InputObject "" -FilePath ****\AutoReports\AutoSSRSReports\errorlog.txt -Append
+                    </pre>
+            </code>
+        </div>
+            <br>
+            <br>
+            <h3>poshArc.ps1</h3>
+
+            <span>
+                <br>
+                <code>
+                    <pre>
+###
+### PowerShell MAS Archive Program v0.2
+### Made by Luke Varley
+###
+
+cls
+$ftpfolder = "****\FTP" # Variable needs changing on live system.
+$logfile = "ArchiveLog.txt"
+$now = Get-Date
+
+#$ErrorActionPreference = "Stop"
+
+
+function Get-ArchiveFolder ($TypeOfFile, [String]$FileName) {
+    try
+    {
+
+        $arcdir = "****\archive" # Variable needs changing on live system.
+
+        $FileNameData = $FileName.Split("_").Split(".")
+        $DateTimeOfFile = [DateTime]::Now.Year
+
+        if ($TypeOfFile -eq "mas" ) {
+            $DateTimeOfFile = [DateTime]$FileNameData[2].Insert(4,"-").Insert(7,"-").Insert(10,'T').Insert(13,':').Insert(16,':')
+            #Add-Content -Path .\folders.txt -Value "$DateTimeOfFile file $($FileNameData[2].Insert(4," ").Insert(7," ").Insert(10,' ').Insert(13,' ').Insert(16,' '))"  # for debugging
+            return "$arcdir\$((Get-Date -Date $DateTimeOfFile).Year)\Broadcast\$(get-date $DateTimeOfFile -uformat %Y)_Week_$(get-date $DateTimeOfFile -uformat %V)"
+        }
+        elseif ($TypeOfFile -eq "bom") {
+            return "$arcdir\$DateTimeOfFile\BOM"
+        }
+        elseif ($TypeOfFile -eq "pickorder") {
+            return "$arcdir\$DateTimeOfFile\PickOrder"
+        }
+        elseif ($TypeOfFile -eq "lsm") {
+            return "$arcdir\$DateTimeOfFile\LSM"
+        }
+        elseif ($TypeOfFile -eq "parts") {
+            return "$arcdir\$DateTimeOfFile\Parts"
+        }
+        else {
+            return "$arcdir\$DateTimeOfFile"
+        }
+    }
+    catch
+    {
+        Add-Content -Path $logfile -Value "$now : [Error Code: Peach] $_.Exception.Message $_.Exception.ItemName"
+    }
+} # end function Get-ArchiveFolder
+
+
+function Archive-MasFiles ($ftpdir = $ftpfolder) {
+    try
+    {
+
+        $lastimportedwritetime = (dir $ftpdir\*.done | sort LastWriteTime -Descending)[0].LastWriteTime
+        $filestoarchive = Get-ChildItem $ftpdir\*.done | sort LastWriteTime -Descending | Where-Object {$_.LastWriteTime -lt $lastimportedwritetime.AddHours(-2) } 
+        $numoffiles = ($filestoarchive | measure).Count
+
+        #For Each File in the FTPdir
+        Write-Host "$numoffiles : files in dir"
+        $filestoarchive | ForEach-Object {
+            if ($_.Name.StartsWith("Voith","CurrentCultureIgnoreCase") -and $_.Name.EndsWith(".done")) { #Mas Files
+                $dest = Get-ArchiveFolder -TypeOfFile mas -FileName $_.Name
+                if(!(Test-Path $dest)) {New-Item $dest -ItemType Directory}
+                #Write-Host "$_ is a MAS File, copying to $dest" 
+                Move-Item -Destination "$dest\" -Path $_ 
+
+            }
+            elseif ($_.Name.StartsWith("BOM_","CurrentCultureIgnoreCase") -and $_.Name.EndsWith(".done")) { # BOM Files
+                $dest = Get-ArchiveFolder -TypeOfFile bom -FileName $_.Name
+                if(!(Test-Path $dest)) {New-Item $dest -ItemType Directory}
+                Write-Host "$_ is a BOM file, copying to $dest" 
+                Move-Item -Destination "$dest\" -Path $_ 
+
+            }
+            elseif ($_.Name.StartsWith("PickOrder_","CurrentCultureIgnoreCase") -and $_.Name.EndsWith(".done")) { # PickOrder Files
+                $dest = Get-ArchiveFolder -TypeOfFile pickorder -FileName $_.Name
+                if(!(Test-Path $dest)) {New-Item $dest -ItemType Directory}
+                Write-Host "$_ is a PickOrder file, copying to $dest" 
+                Move-Item -Destination "$dest\" -Path $_ 
+
+            }
+            elseif ($_.Name.StartsWith("LSM_","CurrentCultureIgnoreCase") -and $_.Name.EndsWith(".done")) { # LSM Files
+                $dest = Get-ArchiveFolder -TypeOfFile lsm -FileName $_.Name
+                if(!(Test-Path $dest)) {New-Item $dest -ItemType Directory}
+                Write-Host "$_ is a BOM file, copying to $dest" 
+                Move-Item -Destination "$dest\" -Path $_ 
+
+            }
+            elseif ($_.Name.StartsWith("Parts_","CurrentCultureIgnoreCase") -and $_.Name.EndsWith(".done")) { # parts Files
+                $dest = Get-ArchiveFolder -TypeOfFile lsm -FileName $_.Name
+                if(!(Test-Path $dest)) {New-Item $dest -ItemType Directory}
+                Write-Host "$_ is a BOM file, copying to $dest" 
+                Move-Item -Destination "$dest\" -Path $_ 
+
+            }
+            else { # Invalid Files
+                $dest = Get-ArchiveFolder -TypeOfFile invalid -FileName $_.Name
+                if(!(Test-Path $dest)) {New-Item $dest -ItemType Directory}
+                Add-Content -Path $logfile -Value "$now : $_ is invaid" 
+                Move-Item -Destination "$dest\" -Path $_ 
+ 
+            }
+        }
+    }
+    catch
+    {
+        Add-Content -Path $logfile -Value "$now : Error Code: [Orange] $_.Exception.Message $_.Exception.ItemName"
+    }
+} #end function Archive-MasFiles
+
+try 
+{
+    Archive-MasFiles
+}
+catch
+{
+    Add-Content -Path $logfile -Value "$now : Error Code: [Mango] $_.Exception.Message $_.Exception.ItemName"
+}
+
+                </pre>
+                </code>
+
+                <br>
+                poshArc script I initally made and never thought about again but looking back it
+                was a script that made once didnt need any changes too it really and worked perfectly.
+                It was quite simple just moving files into date file structure to archive files away.
+                <br>
+                <br>
+                There are several other projects not listed but these are some of 
+                the more prolific ones used so far.
+                <br>
+            </span>
+            @*<div class="gallery">
+                    <div class="pic">pic1</div>
+                    <div class="pic">pic2</div>
+                    <div class="pic">pic3</div>
+                </div>*@
+    </div>
+
+
+
+    <div class="content">
+        <h2>Python Projects</h2>
+        <br>
+        <div class="content">
+            <h3>pyArc.py</h3>
+            <br>
+            <code>
+                <pre>
+# Get-Mas - Gets a list off all mas files in a directory
+                    import os,shutil,time,sys,re
+import VoithSILSLib
+
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+print("Current Working Dir: " + os.getcwd())
+currdir = os.path.dirname(os.path.realpath(__file__))
+errorlog = currdir + "\\pyArc_errorlog.log"
+timeran = time.strftime("%d/%m/%y %H:%M:%S",time.localtime())
+
+dirlist = []
+errors = []
+
+configsettings = VoithSILSLib.GetConfigSettings(os.path.dirname(os.path.realpath(__file__)) + "\\config.cfg")
+errorlog = configsettings["errorlog"] + "\\" + str(time.localtime()[0]) + " - " + str(time.localtime()[1]) + " - " + str(time.localtime()[2]) + " - pyArc_errorlog.log"  
+srcdir = configsettings["ArchiveLoc"]
+ArchiveLog = "{}\\{}.csv".format(configsettings["ArchiveLog"],configsettings["ArchiveLogFN"])
+print(ArchiveLog)
+print("BOM Archive Location: {} \nBroadcast Archive Location: {} \nLSM Archive Location: {}\nParts Archive Location: {}\nPickOrder Archive Location: {}".format(configsettings["BOM"],configsettings["BROADCAST"],configsettings["LSM"],configsettings["PARTS"],configsettings["PICKORDER"]))
+
+bomlist = []
+pickorderlist = []
+partslist = []
+lsmlist = []
+
+
+def GetDirList():
+    """ x
+    GetDirList
+    Creates a list of all files in the directory and collects data such as 
+    [0]filename, [1]time created, [2]time created(epoch), [3]Chassis,
+    [4]SONO, [5]Sender2 ID, [6] D2/1 Wagon/Hatch
+    """    
+    files = [f for f in os.listdir(srcdir) if os.path.isfile(os.path.join(srcdir,f))]
+
+    print("Found {}, in the directory {}".format(len(files),srcdir))
+
+    if not files:
+        why = ("No files to move.")
+        print(why)
+        errors.append([timeran,str(why)])
+    else:
+        time.sleep(5) #this sleep is required
+        for f in files:
+            f_ext = os.path.splitext(f)
+            if f_ext[1] == ".done" :
+                if f[0:3] == "BOM" :
+                    fi = [f,"BOM"]
+                    bomlist.append(fi)
+                elif f[0:6] == "PickOr" :
+                    fi = [f,"PICKORDER"]
+                    pickorderlist.append(fi)
+                elif f[0:3] == "LSM" :
+                    fi = [f,"LSM"]
+                    lsmlist.append(fi)
+                elif f[0:3] == "Par" :
+                    fi = [f,"PARTS"]
+                    partslist.append(fi)
+                elif f[0:5] == "VOITH" :
+                    filedata = VoithSILSLib.ReadFile(srcdir + "\\",f)
+                    m = re.search(r'\d{12,17}',f)
+                    fileinfo = []
+                    fileinfo.append(f) #0 file name
+                    fileinfo.append(VoithSILSLib.Epoch2HumanReadableTime(m.group(0))) #1 human readable time
+                    fileinfo.append(VoithSILSLib.MASTimeStamp2Epoch(m.group(0))) #2 epoch from time stamp in file name
+                    fileinfo.append(filedata["CHASSIS"]) #3 chassis
+                    fileinfo.append(filedata["SONO"]) #4 sono
+                    fileinfo.append(filedata["SENDER2"]) #5 sender2
+                    fileinfo.append(filedata["INFO"]) #6 D2/1 Wagon/Hatch
+                    dirlist.append(fileinfo)
+                else:
+                    why = ("Unkown file:\t{}\t{}".format(f,f[0:4]))
+                    print(why)
+                    errors.append([timeran,str(why)])
+            else:
+                why = ("Unimported file detected: {}".format(f))
+                print(why)
+                errors.append([timeran,str(why)])
+        dirlist.sort(key=lambda x: x[2]) #picks lowest time
+    return
+
+def ArchiveMASFiles():
+    """ 
+    ArchiveMASFiles
+    Moves mas file from src directory to the destination directory
+    """
+    archived = []
+    lists = [bomlist,pickorderlist,partslist,lsmlist]
+    try:
+        for li in lists:
+            for files in li:
+                print("Moving:\t {} \t {}".format(files[0],files[1]))
+                shutil.move(srcdir +"\\"+ files[0],configsettings[files[1]])
+                print("Copy Complete.")
+                
+        if not dirlist:
+            why = "No files to move."
+            errors.append([timeran,str(why)])
+            print(why)
+        else:
+            while dirlist[0][2] <= VoithSILSLib.EpochSevenYesterday():
+                print("Moving:\t {}".format(dirlist[0][0]))
+                week = VoithSILSLib.Epoch2isocal(dirlist)[1]
+                year = VoithSILSLib.Epoch2isocal(dirlist)[0]
+                destdir = "{}\\{}_{}{}\\".format(configsettings["BROADCAST"],year,"Week_",week)
+                if not os.path.isdir(destdir):
+                	print("trying to make folder {}".format(destdir))
+                	os.makedirs(destdir)
+                shutil.move(srcdir +"\\"+ dirlist[0][0],destdir)
+                print("Copy Complete.")
+                dirlist[0].append("{}_{}_{}".format(year,"Week_",week))
+                archived.append(dirlist[0])
+                del dirlist[0]
+            print("Archived {} MAS Files".format(str(len(archived))))
+    except WindowsError as why:
+        errors.append([timeran,str(why)])
+        print(why)
+    except OSError as why:
+        errors.append([timeran,str(why)])
+        print(why)
+    except IndexError as why:
+        errors.append([timeran,str(why)])
+        print(why)
+    return archived
+
+def OutputCSV(archive): 
+    if not os.path.isfile(ArchiveLog):
+        with open(ArchiveLog,"a+") as csvfile:
+            csvfile.write("{},{},{},{},{},{},{},\n".format("File Name","Time Received","Chassis","SONO","Sender2", "D1/2 Hatch/Wagon","Archive Location"))
+    with open(ArchiveLog,"a+") as csvfile:
+        count = 0
+        for x in archive:
+            csvfile.write("{},{},{},{},{},{},{},\n".format(archive[count][0],archive[count][1].isoformat(),archive[count][3],archive[count][4],archive[count][5],archive[count][6],archive[count][7]))
+            count = count + 1
+    return
+
+def main():
+    GetDirList()
+    listofarchivedfiles = ArchiveMASFiles()
+    OutputCSV(listofarchivedfiles)
+    return
+
+main()
+VoithSILSLib.OutputErrors(errors,errorlog,dirlist)
+
+
+                </pre>
+            </code>
+
+            <br>
+            This script is essentialy same as the poshArc above but made in python it did have
+            the benefit that it produced a CSV file of the files it moved. This was quite early
+            in my scripting learning days so functions are fairly large to what I would like to
+            these days.
+            <br>
+            <br>
+        </div>
+
+        <h3>filemove.py</h3>
+        <br>
+        <code>
+            <pre>
+import os,shutil,time,sys,logging,re,traceback
+
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+currdir = os.path.dirname(os.path.realpath(__file__))
+timeran = time.strftime("%d/%m/%y %H:%M:%S",time.localtime())
+print(timeran + " Current Working Dir: " + os.getcwd())
+
+dirlist = []
+
+ERROR_LOG_FN = 'log{}.txt'.format(time.strftime("_%d_%m_%Y",time.localtime()))
+FORMAT = '%(funcName)s   %(lineno)d %(levelname)s         %(message)s'
+logging.basicConfig(format=FORMAT,
+                    filename=ERROR_LOG_FN,
+                    level=logging.DEBUG,
+                    )
+# logging.DEBUG - For Beta Testing.
+# logging.INFO - Low level debugging info.
+# logging.WARNING - High Level debugging info.
+# logging.ERROR - Must always be reported.
+# logging.CRITICAL - Must always be reported.
+
+
+def GetConfigSettings():
+    """
+    GetConfigSettings
+    gets config settings and stores them in a dict and returns it
+    """
+    try:
+        configfile = os.path.dirname(os.path.realpath(__file__)) + "\\config.cfg"
+        cfgsettings = {}
+        with open(configfile, "r") as cfgfile:
+            for x in cfgfile:
+                varlist = x.split(',')
+                if varlist[1].strip()[0:10] == "*startdir*":
+                    temp = varlist[1].strip()[10:len(varlist[1].strip())]
+                    varlist[1] = os.path.dirname(os.path.realpath(__file__)) + temp
+                cfgsettings.update({ varlist[0].strip():varlist[1].strip() })
+    except Exception as e:
+        logging.critical("{} \n".format(e) ,exc_info=1)
+        logging.critical("{}	Variables: 	configfile>{} 	| 	cfgsettings>{} 	| 	dirlist>{}".format(timeran, configfile,cfgsettings, dirlist))
+        logging.info("end\n\n")
+        sys.exit(1)
+    return cfgsettings
+
+
+try:
+    configsettings = GetConfigSettings()
+    srcdir = configsettings["source"]
+    destdir = configsettings["destination"]
+except Exception as e:
+        logging.critical("{} \n".format(e) ,exc_info=1)
+        logging.critical("{}	Variables: configsettings>{}	 | 	srcdir>{}	 | 	destdir>{}	 | 	dirlist>{}".format(timeran, configsettings,srcdir,destdir, dirlist))
+        logging.info("end\n\n")
+        sys.exit(1)
+
+def CarType(mas_file):
+    c1 = re.compile(".*SENTINEL*")
+    mas_file.seek(0)
+    if c1.search(mas_file.read()):
+        return 'D2'
+    else:
+        return 'D1'
+    pass
+
+
+def WriteDataFile(d):
+    """
+    WriteDataFile
+    Outputs the data file writing to it the last sender2 number anf filename
+    """
+    try:
+        with open("data","w") as datafile:
+            if int(d[0][5]) >= 9999:
+                datafile.write("lmsender," + "00000" + ",\n")
+                why = "{}	*** SenderID above 9999 returned to 00000 ***".format(timeran)
+                logging.info(why) #warning
+            else:
+                datafile.write("lmsender," + str(d[0][5]).strip() + ",\n")
+            datafile.write("lmfilename," + str(os.path.splitext(d[0][0])[0]) + ",\n")
+            datafile.write("lmfileext," + str(os.path.splitext(d[0][0])[1]) + ",\n")
+        return
+    except Exception as e:
+        logging.critical("{} \n".format(e) ,exc_info=1)
+        logging.critical("{}	Variables: configsettings>{}	 | 	srcdir>{}	 | 	destdir>{}	 | 	d>{}".format(timeran, configsettings,srcdir,destdir,d))
+        logging.info("end\n\n")
+        sys.exit(1)
+
+
+def ReadFile(direct,fname):
+    """
+    ReadFile function
+    opens MAS file in read only mode and searchs for the chassis number, SONO, Sender2 ID and returns it.
+    """
+    fname = direct + "\\" + fname
+    results = []
+    try:
+        with open(fname, "r") as mas_file:
+            for line in mas_file:
+                currentline = line.split(",")
+                results.append(currentline[1][11:17]) #chassis
+                results.append(currentline[0]) #sono
+                results.append(currentline[2].strip()) #sender2
+                results.append(CarType(mas_file)) # D1/D2
+                results.append(currentline[3].strip()) #engine type
+    except Exception as e:
+        logging.critical("{} \n".format(e) ,exc_info=1)
+        logging.critical("{}	Variables: configsettings>{}	 | 	srcdir>{}	 | 	destdir>{}	 | 	results>{}	 | 	fname>{}".format(timeran, configsettings,srcdir,destdir,results,fname))
+        logging.info("end\n\n")
+        sys.exit(1)
+    return results
+
+def GetData():
+    """
+    GetData
+    Gets data settings and stores them in a dict and returns it.
+    """
+    fn = "None"
+    try:
+        configfile = os.path.dirname(os.path.realpath(__file__)) + "\\data"
+        data = {}
+        if os.path.isfile(currdir + "\\" + "data"):
+            with open(configfile, "r") as cfgfile:
+                for x in cfgfile:
+                    varlist = x.split(',')
+                    if varlist[1].strip()[0:10] == "*startdir*":
+                        temp = varlist[1].strip()[10:len(varlist[1].strip())]
+                        varlist[1] = os.path.dirname(os.path.realpath(__file__)) + temp
+                    data.update({ varlist[0].strip():varlist[1].strip() })
+        else:
+            fn = input("Enter File Name for last imported car:- ")
+            logging.warning("{}	*** Data file not found generating new data file. Asked for user input and got {} ***".format(timeran, fn))
+            fname = os.path.splitext(fn)
+            d = ReadFile(destdir,fn)
+            d1 = {"lmsender":d[2]}
+            d2 = {"lmfilename":fname[0]}
+            d3 = {"lmfileext":fname[1]} 
+            logging.critical(timeran + "	Writing new file with Sender2: " + d[2] + " FileName " + fname[0]+fname[1])
+            data.update(d1)
+            data.update(d2)
+            data.update(d3)
+            WriteDataFile([[fn,"000","000","000","000",d[2],'dx','eee']])
+            #				fn, time,time,chas,sono, sender2,d2,eng
+            #				0	1	2	3		4		5	6	7
+    except Exception as e:
+        logging.critical("{} \n".format(e) ,exc_info=1)
+        logging.critical("{}	Variables: configsettings>{}	 | 	srcdir>{}	 | 	destdir>{}	 | 	fn>{}".format(timeran, configsettings,srcdir,destdir,fn))
+        logging.info("end\n\n")
+        sys.exit(1)
+    return data
+
+
+datasettings = GetData()
+reportlog = configsettings["reportlog"] + '\\sequencereport{}.csv'.format(time.strftime("_%Y",time.localtime()))
+
+
+def GetDirList():
+    """
+    GetDirList
+    Creates a list of all files in the directory and collects data such as 
+    [0]filename, [1]time created, [2]time created(epoch), [3]Chassis,
+    [4]SONO, [5]Sender2 ID, [6] D2/1 Wagon/Hatch
+    """
+    try:
+        files = [f for f in os.listdir(srcdir) if os.path.isfile(os.path.join(srcdir,f))]
+        if not files:
+            print("{}:	No files to move.".format(timeran))
+            logging.warning("{}:	No files to move.".format(timeran))
+            why = timeran + "	Last file imported was	 File: " + datasettings["lmfilename"] + "	 - Sender2: " + datasettings["lmsender"]
+            print(why)
+            logging.info(why)
+            sys.exit(0)
+        else:
+            time.sleep(5) #this sleep is required
+            for f in files:
+                filedata = ReadFile(srcdir + "\\",f)
+                fileinfo = []
+                fileinfo.append(f) #0 file name
+                dateofile = time.ctime(os.path.getmtime(srcdir +"\\"+ f))
+                fileinfo.append(dateofile) #1 file created time human readable format
+                epoch = time.strptime(dateofile, "%a %b %d %H:%M:%S %Y")
+                fileinfo.append(time.mktime(epoch)) #2 time file was created in epoch time
+                fileinfo.append(filedata[0]) #3 chassis
+                fileinfo.append(filedata[1]) #4 sono
+                fileinfo.append(filedata[2]) #5 sender2
+                fileinfo.append(filedata[3]) #6 D2/1 Wagon/Hatch
+                fileinfo.append(filedata[4]) #7 Engine Type
+                dirlist.append(fileinfo)
+            dirlist.sort(key=lambda x: x[5]) #picks lowest sender1
+            sender2 = int(dirlist[0][5]) - int(datasettings["lmsender"])
+            logging.debug(timeran + "	 " + dirlist[0][5] + " - " + datasettings["lmsender"] + " = " + str(sender2))
+            while not sender2 == 1:
+                del dirlist[0]
+                if not dirlist:
+                    logging.critical("{}	Next file not in directory".format(timeran))
+                    break
+                else:
+                    sender2 = int(dirlist[0][5]) - int(datasettings["lmsender"])
+                    logging.debug(dirlist[0][5] + " - " + datasettings["lmsender"] + " = " + str(sender2))
+                    for x in dirlist:
+                        logging.debug(x[1] + " - " + x[0] + " - " + x[5])
+                    logging.debug("------------")
+    except Exception as e:
+        logging.critical("{} \n".format(e) ,exc_info=1)
+        logging.critical("{}	Variables: configsettings>{}	 | 	srcdir>{}	 | 	srcdir>{}	 | 	destdir>{}	 | 	files>{}".format(timeran, configsettings,srcdir,destdir,files))
+        logging.info("end\n\n")
+        sys.exit(1)
+    return
+
+
+def moveMASFile():
+    """
+    MoveMASFile
+    Moves mas file from src directory to the destination directory
+    """
+    try:
+        if not dirlist:
+            why = timeran + "		No files to move."
+            print(why)
+            logging.debug(why)
+        else:
+            why = timeran + "	Attempting to move		 File: " + dirlist[0][0] + "	 - Sender2: " + dirlist[0][5] + " - Chassis: " + dirlist[0][3] 
+            print(why)
+            logging.info(why)
+            if os.path.isfile(destdir + "\\" + datasettings["lmfilename"] + ".done"):
+                print("Detected last moved file done importing")
+                logging.info(timeran + "	Detected last moved file done importing")
+                print("Coping file new file: " + dirlist[0][0])
+                logging.info(timeran + "	Coping file new file: " + dirlist[0][0])
+                shutil.move(srcdir +"\\"+ dirlist[0][0],destdir)
+                ("Copy Complete.")
+                logging.info(timeran + "	Copy Complete.")
+                WriteDataFile(dirlist)
+                OutputReports([dirlist[0]])
+                why = "Moved File: " + dirlist[0][0] + " @@ " + time.strftime("%H:%M:%S",time.localtime())
+            else:
+                why = timeran + "	Last file not yet imported	 File: " + datasettings["lmfilename"] + "	 - Sender2: " + datasettings["lmsender"]
+                print(why)
+                logging.info(why)
+    except Exception as e:
+        logging.critical("{} \n".format(e) ,exc_info=1)
+        logging.critical("{}	Variables: configsettings>{}	 | 	srcdir>{}	 | 	destdir>{}	 | 	dirlist>{}".format(timeran, configsettings,srcdir,destdir,dirlist))
+        logging.info("end\n\n")
+        sys.exit(1)
+    return
+
+
+def OutputReports(archive): 
+    try:
+        if not os.path.isfile(reportlog):
+            with open(reportlog,"a+") as csvfile:
+                csvfile.write("{},{},{},{},{},{},{}\n".format("File Name","Time Recieved","Chassis","SONO","Sender2", "CarType", "EG Code"))
+        with open(reportlog,"a+") as csvfile:
+            for x in archive:
+                filename = x[0]
+                timerecieved = x[1]
+                chassis = str(x[3]).zfill(6)
+                sono = x[4]
+                sender2 = str(x[5]).zfill(6)
+                cartypedata = x[6]
+                eniginetype = x[7]
+                csvfile.write("{},{},{},{},{},{},{}\n".format(filename, timerecieved, chassis, sono, sender2, cartypedata, eniginetype))
+        logging.info(timeran + "	Report Generated")
+    except PermissionError as why:
+        logging.critical(why + "\n" ,exc_info=1)
+        logging.critical([timeran,"\n{}: please close the report file.\nRetrying again in 5 seconds".format(why)])
+        print(why)
+        time.sleep(5)
+        OutputReports(archive)
+    except Exception as e:
+        logging.critical("{} \n".format(e) ,exc_info=1)
+        logging.critical("{}	Variables: configsettings>{}	 | 	srcdir>{}	 | 	destdir>{}	 | 	dirlist>{}	 | 	archive>{}".format(timeran, configsettings,srcdir,destdir,dirlist,archive))
+        logging.info("end\n\n")
+        sys.exit(1)
+
+
+def main():
+    try:
+        while True:
+            if (int(configsettings["tpm"]) - 1) <= time.localtime()[5] <= (int(configsettings["tpm"]) + 6):
+                GetDirList()
+                moveMASFile()
+                return False
+            else:
+                if time.localtime()[5] > (int(configsettings["tpm"]) + 6):
+                    x = 60 - time.localtime()[5] + int(configsettings["tpm"])
+                elif time.localtime()[5] < (int(configsettings["tpm"]) - 1):
+                    x = (int(configsettings["tpm"]) - time.localtime()[5])
+                time.sleep(x)
+    except Exception as e:
+        logging.critical("{}\n".format(e) ,exc_info=1)
+        logging.critical("{}	Variables: timeran>{}	 | 	configsettings>{}	 | 	srcdir>{}	 | 	destdir>{}	 | 	dirlist>{}".format(timeran, configsettings,srcdir,destdir,dirlist))
+        logging.info("end\n\n")
+        sys.exit(1)
+
+
+main()
+logging.info("end\n\n")
+
+                </pre>
+            </code>
+
+            <br>
+            I think this is one of the first scripts I put into production and I think
+            this was hugely underated by management how much this saved the business.
+            When I joined Voith the third party software vendor would miss sequence 
+            orders in the system (it would order them correctly to the spec they were
+            given) but that was not what was needed. So for a longest period this script
+            run to ensure the sequence of orders going into the system. I believed saved
+            the business in the hundreds of thousands of pounds in downtime.
+        <br>
+        <br>
+    </div>
+
+</div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- The Close Button -->
+    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+</div>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var imgs = document.getElementsByClassName('pic');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    for (var i = 0; i < imgs.length; i++) {
+        img = imgs[i].getElementsByTagName("img");
+        img[0].onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+</script>

@@ -1,0 +1,545 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+code pre {
+    padding: 15px;
+    background-color: darkblue;
+    color: azure;
+    overflow-y: hidden;
+}
+
+body {
+    font: 14px Montserrat, Helvetica, sans-serif;
+    margin: 0 40px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+section {
+    position: relative;
+    margin-top: 30px;
+    max-width: 1024px;
+}
+
+#container {
+    width: 65%;
+}
+
+#container h1 {
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+#container .details,
+#container .tags {
+    display: flex;
+    font-size: 16px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    align-items: center;
+}
+
+#container .date {
+    padding-right: 12px;
+}
+
+#container .details {
+    max-width: 500px;
+    margin: auto;
+}
+
+#container .tags {
+    justify-content: space-between;
+    width: 100%;
+}
+
+#container .tags svg:nth-child(1) {
+    fill: #943395;
+}
+
+#container .tags svg:nth-child(3) {
+    fill: #6D3395;
+}
+
+#container .tags svg:nth-child(5) {
+    fill: #95336F;
+}
+
+#container .tinygraphic {
+    margin-left: 15px;
+    margin-right: 15px;
+    fill: #334895;
+}
+
+#container span {
+    font-size: 14px;
+    float: none;
+    text-overflow: ellipsis;
+}
+
+#container img {
+    float: left;
+    margin: 15px;
+}
+
+#container .rightimg {
+    float: right;
+    margin: 15px;
+}
+
+#container .content {
+    position: relative;
+    margin: 30px 0;
+    padding-bottom: 20px;
+    border-style: solid;
+    border-color: #334895;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 5px;
+    border-left-width: 0;
+}
+
+#container .content .gallery {
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 20px;
+    padding: 10px;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+#container .content .gallery .label {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+}
+
+#container .content .gallery .pic img {
+    border-radius: 5px;
+    cursor: pointer;
+    max-height: 160px;
+    max-width: 160px;
+}
+
+#container .readme {
+    position: absolute;
+    right: 0;
+}
+
+.viewport {
+    background: url("../background1.jpg");
+    background-position: center;
+    height: 140px;
+    width: 100%;
+}
+
+header {
+    width: 100%;
+    max-width: 1024px;
+    position: relative;
+}
+
+header .logo {
+    position: absolute;
+    z-index: 0;
+}
+
+header .logo svg {
+    height: 100px;
+    opacity: 0.3;
+    width: 100px;
+}
+
+header .logo circle {
+    fill: none;
+    stroke: white;
+    stroke-width: 20;
+}
+
+header .logo path {
+    fill: white;
+    fill-rule: evenodd;
+    stroke: white;
+    stroke-width: 2.27px;
+}
+
+header h1 {
+    font: 64px sans-serif;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    opacity: 0.3;
+    color: white;
+}
+
+header ul {
+    display: flex;
+    list-style-type: none;
+}
+
+header li {
+    font-size: 24px;
+    line-height: 50px;
+    width: 16%;
+    height: 60px;
+    margin-right: 0.6%;
+    padding: 0.6%;
+    text-align: center;
+    color: white;
+}
+
+header .menu {
+    height: 70px;
+}
+
+header .menu a {
+    color: white;
+    text-decoration: none;
+}
+
+header .bar {
+    position: absolute;
+    bottom: -3px;
+    width: 100%;
+    height: 13px;
+    background: white;
+}
+
+header li:last-child {
+    margin: 0;
+}
+
+header .active {
+    height: 70px;
+}
+
+header #blog {
+    background: #334895;
+}
+
+header #blog:hover {
+    background: #405abb;
+    height: 70px;
+}
+
+header #about {
+    background: #453395;
+}
+
+header #about:hover {
+    background: #5740bb;
+    height: 70px;
+}
+
+header #cv {
+    background: #6D3395;
+}
+
+header #cv:hover {
+    background: #8940bb;
+    height: 70px;
+}
+
+header #projects {
+    background: #943395;
+}
+
+header #projects:hover {
+    background: #ba40bb;
+    height: 70px;
+}
+
+header #praise {
+    background: #95336F;
+}
+
+header #praise:hover {
+    background: #bb408b;
+    height: 70px;
+}
+
+header #contact {
+    background: #953348;
+}
+
+header #contact:hover {
+    background: #bb405a;
+    height: 70px;
+}
+
+.sidebar {
+    position: absolute;
+    margin-left: auto;
+    width: 30%;
+    height: 100%;
+    right: 0;
+    left: auto;
+}
+
+.sidebar .avatar {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+    border-radius: 50%;
+    background: url("../profile_n.jpg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+}
+
+.sidebar .tags {
+    position: relative;
+    margin: 40px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 210px;
+}
+
+.sidebar .item {
+    font-size: 8px;
+    width: 50px;
+    height: 10px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    color: white;
+    border-radius: 25px;
+}
+
+.sidebar .item:nth-child(1),
+.sidebar .item:nth-child(6) {
+    margin-left: 40px;
+}
+
+.sidebar .item:nth-child(2),
+.sidebar .item:nth-child(7) {
+    margin-right: 40px;
+}
+
+.sidebar .workday {
+    background: #334895;
+}
+
+.sidebar .games {
+    background: #453395;
+}
+
+.sidebar .webdev {
+    background: #6D3395;
+}
+
+.sidebar .py {
+    background: #943395;
+}
+
+.sidebar .js {
+    background: #95336F;
+}
+
+.sidebar .tech {
+    background: #953348;
+}
+
+.sidebar .other {
+    background: #6D3395;
+}
+
+.sidebar .workday:hover {
+    background: #516ac3;
+}
+
+.sidebar .games:hover {
+    background: #6651c3;
+}
+
+.sidebar .webdev:hover {
+    background: #9551c3;
+}
+
+.sidebar .py:hover {
+    background: #c251c3;
+}
+
+.sidebar .js:hover {
+    background: #c35197;
+}
+
+.sidebar .tech:hover {
+    background: #c3516a;
+}
+
+.sidebar .other:hover {
+    background: #9551c3;
+}
+
+.sidebar .highlighter {
+    position: absolute;
+    left: 90px;
+    margin-top: -3px;
+    fill: #334895;
+}
+
+.sidebar .postarchives {
+    margin-left: 110px;
+}
+
+.sidebar .archivedpost {
+    margin-bottom: 15px;
+}
+
+footer {
+    position: absolute;
+    padding-top: 2px;
+    height: 52px;
+    width: 200px;
+    bottom: 0;
+}
+
+footer .logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+footer p {
+    width: 200px;
+    font-size: 12px;
+}
+
+footer svg {
+    height: 50px;
+    opacity: 1;
+    width: 50px;
+}
+
+footer svg circle {
+    fill: none;
+    stroke: black;
+    stroke-width: 20;
+}
+
+footer svg path {
+    fill: black;
+    fill-rule: evenodd;
+    stroke: black;
+    stroke-width: 2.27px;
+}
+
+.navbar-fixed {
+    top: 0;
+    z-index: 99;
+    position: fixed;
+    width: 100%;
+    max-width: 1024px;
+}
+
+.back_bar {
+    height: 80px;
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    z-index: -1;
+}
+
+/*  Modal CSS from W3Schools  */  
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}

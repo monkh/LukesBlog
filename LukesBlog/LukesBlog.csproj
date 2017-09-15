@@ -159,25 +159,116 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="20150729_165251.jpg" />
+    <Content Include="20160418_223643_original.jpg" />
+    <Content Include="background.jpg" />
+    <Content Include="background1.jpg" />
+    <Content Include="Content\images\marshalexample1.png" />
+    <Content Include="Content\images\marshalexample2.png" />
+    <Content Include="Content\images\marshalexample3.png" />
+    <Content Include="Content\pictures\Mexico\20160413_065104.jpg" />
+    <Content Include="Content\pictures\Mexico\20160413_231834.jpg" />
+    <Content Include="Content\pictures\Mexico\20160416_210830.jpg" />
+    <Content Include="Content\pictures\Mexico\20160416_212534.jpg" />
+    <Content Include="Content\pictures\Mexico\20160416_212541.jpg" />
+    <Content Include="Content\pictures\Mexico\20160416_212555.jpg" />
+    <Content Include="Content\pictures\Mexico\20160416_212625.jpg" />
+    <Content Include="Content\pictures\Mexico\20160418_214129.jpg" />
+    <Content Include="Content\pictures\Mexico\20160418_214148.jpg" />
+    <Content Include="Content\pictures\Mexico\20160418_214205.jpg" />
+    <Content Include="Content\pictures\Mexico\20160418_214220.jpg" />
+    <Content Include="Content\pictures\Mexico\20160418_223643.jpg" />
+    <Content Include="Content\pictures\Mexico\20160419_013302.jpg" />
+    <Content Include="Content\pictures\Mexico\20160419_013311.jpg" />
+    <Content Include="Content\pictures\Mexico\20160419_022534.jpg" />
+    <Content Include="Content\pictures\Mexico\20160420_020228.jpg" />
+    <Content Include="Content\pictures\Mexico\20160420_020350.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160413_065104.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160413_231834.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160416_210830.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160416_212534.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160416_212541.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160416_212555.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160416_212625.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160418_214129.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160418_214148.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160418_214205.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160418_214220.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160418_223643.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160419_013302.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160419_013311.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160419_022534.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160420_020228.jpg" />
+    <Content Include="Content\pictures\Mexico\min\20160420_020350.jpg" />
+    <Content Include="Content\pictures\Scafell\20160801_135758.jpg" />
+    <Content Include="Content\pictures\Scafell\20160801_141922.jpg" />
+    <Content Include="Content\pictures\Scafell\20160801_153342.jpg" />
+    <Content Include="Content\pictures\Scafell\20160801_161657.jpg" />
+    <Content Include="Content\pictures\Scafell\min\20160801_135758.jpg" />
+    <Content Include="Content\pictures\Scafell\min\20160801_141922.jpg" />
+    <Content Include="Content\pictures\Scafell\min\20160801_153342.jpg" />
+    <Content Include="Content\pictures\Scafell\min\20160801_161657.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_131329.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_131334.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_134407.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_135432.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_135437.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_135441.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_135446.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_135637.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_143045.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_143052.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_144555.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_144559.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_144601.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_151049.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_151053.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_151058.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_161039.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_162528.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_164649.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_165207.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_165221.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_165242.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_165251.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_173423.jpg" />
+    <Content Include="Content\pictures\Snowdon\20150729_183036.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_131329.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_131334.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_134407.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_135432.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_135437.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_135441.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_135446.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_135637.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_143045.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_143052.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_144555.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_144559.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_144601.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_151049.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_151053.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_151058.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_161039.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_162528.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_164649.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_165207.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_165221.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_165242.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_165251.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_173423.jpg" />
+    <Content Include="Content\pictures\Snowdon\min\20150729_183036.jpg" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="placeholder - Copy.jpg" />
+    <Content Include="placeholder.jpg" />
+    <Content Include="profile_n.jpg" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -201,17 +292,11 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Pictures.cshtml" />
+    <Content Include="Views\Home\Praise.cshtml" />
+    <Content Include="Views\Home\Projects.cshtml" />
+    <None Include="Properties\PublishProfiles\LukesBlog - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

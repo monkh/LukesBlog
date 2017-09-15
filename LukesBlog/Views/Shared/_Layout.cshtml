@@ -1,42 +1,90 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <title>Luke IT Professional</title>
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+    <header>
+        <div class="viewport">
+            <div class="logo">
+                <svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 354.33071 354.33071">
+                    <title>svglogo</title>
+                    <g transform="translate(0 -698)">
+                        <path d="m140 794c-25.5 0.01-51.4 8.89-74 22.3l-3.58 2.95c27.4 119 110 66 201 151-13-133-67-176-123-176zm-2.88 46.9a52 17.2 8.89 0 1 23.6 1.8 52 17.2 8.89 0 1 48.7 25 52 17.2 8.89 0 1 -54.1 8.93 52 17.2 8.89 0 1 -48.7 -25 52 17.2 8.89 0 1 30.4 -10.7z" />
+                        <g transform="matrix(.470 0 0 .470 204 746)">
+                            <path d="m-71.9 477 1.88 0.399-6.61 21h-59.8v-2.11h2.91q4.9 0 7.01-3.19 1.2-1.82 1.2-8.43v-49.9q0-7.24-1.6-9.06-2.22-2.51-6.61-2.51h-2.91v-2.11h35v2.11q-6.15-0.057-8.66 1.14-2.45 1.2-3.36 3.02-0.912 1.82-0.912 8.72v48.5q0 4.73 0.912 6.5 0.684 1.2 2.11 1.77 1.42 0.57 8.89 0.57h5.64q8.89 0 12.5-1.31 3.59-1.31 6.55-4.61 2.96-3.36 5.93-10.5z" />
+                            <path d="m4.7 421v2.11q-4.1 0.741-6.21 2.62-3.02 2.79-5.36 8.55l-26.9 65.7h-2.11l-28.9-66.6q-2.22-5.13-3.13-6.27-1.42-1.77-3.53-2.73-2.05-1.03-5.58-1.31v-2.11h31.6v2.11q-5.36 0.513-6.95 1.82-1.6 1.31-1.6 3.36 0 2.85 2.62 8.89l19.7 45.3 18.2-44.7q2.68-6.61 2.68-9.17 0-1.65-1.65-3.13-1.65-1.54-5.58-2.17-0.285-0.057-0.969-0.171v-2.11h23.8z" />
+                        </g>
+                        <circle r="125" cx="174" cy="878" />
+                    </g>
+                </svg>
+
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <h1>Luke's Blog</h1>
+        <nav id="nav_bar">
+            <div class="bar"></div>
+            <div class="back_bar"></div>
+            <ul class="menu">
+                <li id="blog" class="active">@Html.ActionLink("Blog","Index","Home")</li>
+                <li id="about">             @Html.ActionLink("About", "About", "Home")</li>
+                <li id="cv">                @Html.ActionLink("Pictures", "Pictures", "Home")</li>
+                <li id="projects">          @Html.ActionLink("Projects", "Projects", "Home")</li>
+                <li id="praise">            @Html.ActionLink("Praise", "Praise", "Home")</li>
+                <li id="contact">           @Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="sidebar">
+            <div class="avatar"></div>
+            <div class="tags">
+                <div class="item workday">.Net</div>
+                <div class="item games">C#</div>
+                <div class="item webdev">Web Dev</div>
+                <div class="item py">PY</div>
+                <div class="item js">JS</div>
+                <div class="item tech">Tech</div>
+                <div class="item other">Other</div>
+            </div>
+            <footer>
+                <p id="copyright">
+                    Website Designed by<br>
+                    Luke Varley<br>
+                    Copyright @DateTime.Now.Year &copy;
+                </p>
+                <div class="logo">
+                    <svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 354.33071 354.33071">
+                        <title>svglogo</title>
+                        <g transform="translate(0 -698)">
+                            <path d="m140 794c-25.5 0.01-51.4 8.89-74 22.3l-3.58 2.95c27.4 119 110 66 201 151-13-133-67-176-123-176zm-2.88 46.9a52 17.2 8.89 0 1 23.6 1.8 52 17.2 8.89 0 1 48.7 25 52 17.2 8.89 0 1 -54.1 8.93 52 17.2 8.89 0 1 -48.7 -25 52 17.2 8.89 0 1 30.4 -10.7z" />
+                            <g transform="matrix(.470 0 0 .470 204 746)">
+                                <path d="m-71.9 477 1.88 0.399-6.61 21h-59.8v-2.11h2.91q4.9 0 7.01-3.19 1.2-1.82 1.2-8.43v-49.9q0-7.24-1.6-9.06-2.22-2.51-6.61-2.51h-2.91v-2.11h35v2.11q-6.15-0.057-8.66 1.14-2.45 1.2-3.36 3.02-0.912 1.82-0.912 8.72v48.5q0 4.73 0.912 6.5 0.684 1.2 2.11 1.77 1.42 0.57 8.89 0.57h5.64q8.89 0 12.5-1.31 3.59-1.31 6.55-4.61 2.96-3.36 5.93-10.5z" />
+                                <path d="m4.7 421v2.11q-4.1 0.741-6.21 2.62-3.02 2.79-5.36 8.55l-26.9 65.7h-2.11l-28.9-66.6q-2.22-5.13-3.13-6.27-1.42-1.77-3.53-2.73-2.05-1.03-5.58-1.31v-2.11h31.6v2.11q-5.36 0.513-6.95 1.82-1.6 1.31-1.6 3.36 0 2.85 2.62 8.89l19.7 45.3 18.2-44.7q2.68-6.61 2.68-9.17 0-1.65-1.65-3.13-1.65-1.54-5.58-2.17-0.285-0.057-0.969-0.171v-2.11h23.8z" />
+                            </g>
+                            <circle r="125" cx="174" cy="878" />
+                        </g>
+                    </svg>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+                </div>
+            </footer>
+        </div>
+
+        <!-- Content here -->
+        @RenderBody()
+        
+    </section>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/main.js"></script>
 </body>
+
 </html>
+
+

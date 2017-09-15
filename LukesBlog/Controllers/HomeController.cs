@@ -22,8 +22,21 @@ namespace LukesBlog.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
 
+        public ActionResult Pictures()
+        {
+            return View();
+        }
+
+        public ActionResult Projects()
+        {
+            return View();
+        }
+
+        public ActionResult Praise()
+        {
             return View();
         }
     }

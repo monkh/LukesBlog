@@ -166,6 +166,8 @@
     <Content Include="Content\images\marshalexample1.png" />
     <Content Include="Content\images\marshalexample2.png" />
     <Content Include="Content\images\marshalexample3.png" />
+    <Content Include="Content\pictures\data.jpg" />
+    <Content Include="Content\pictures\debug.jpg" />
     <Content Include="Content\pictures\Mexico\20160413_065104.jpg" />
     <Content Include="Content\pictures\Mexico\20160413_231834.jpg" />
     <Content Include="Content\pictures\Mexico\20160416_210830.jpg" />
@@ -200,6 +202,7 @@
     <Content Include="Content\pictures\Mexico\min\20160419_022534.jpg" />
     <Content Include="Content\pictures\Mexico\min\20160420_020228.jpg" />
     <Content Include="Content\pictures\Mexico\min\20160420_020350.jpg" />
+    <Content Include="Content\pictures\network.jpg" />
     <Content Include="Content\pictures\Scafell\20160801_135758.jpg" />
     <Content Include="Content\pictures\Scafell\20160801_141922.jpg" />
     <Content Include="Content\pictures\Scafell\20160801_153342.jpg" />

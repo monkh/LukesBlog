@@ -24,6 +24,9 @@ namespace LukesBlog.DataAccessLayer.Models
         public string Name { get; set; }
         public string Body { get; set; }
         public int Likes { get; set; }
+
+        public int BlogPostID { get; set; }
+        public BlogPost CurrentBlogPost { get; set; }
         
     }
 }

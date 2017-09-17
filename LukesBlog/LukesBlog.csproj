@@ -173,6 +173,9 @@
     <Content Include="20160418_223643_original.jpg" />
     <Content Include="background.jpg" />
     <Content Include="background1.jpg" />
+    <Content Include="bower_components\semantic-ui-button\button.css" />
+    <Content Include="bower_components\semantic-ui-button\button.min.css" />
+    <Content Include="bower_components\semantic-ui-button\package.js" />
     <Content Include="Content\images\marshalexample1.png" />
     <Content Include="Content\images\marshalexample2.png" />
     <Content Include="Content\images\marshalexample3.png" />
@@ -305,6 +308,13 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bower.json" />
+    <Content Include="bower_components\semantic-ui-button\.bower.json" />
+    <Content Include="bower_components\semantic-ui-button\bower.json" />
+    <Content Include="bower_components\semantic-ui-button\composer.json" />
+    <Content Include="bower_components\semantic-ui-button\package.json" />
+    <Content Include="bower_components\semantic-ui-button\README.md" />
+    <Content Include="bower_components\semantic-ui-button\RELEASE-NOTES.md" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Pictures.cshtml" />
     <Content Include="Views\Home\Praise.cshtml" />

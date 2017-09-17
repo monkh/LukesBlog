@@ -1,0 +1,6 @@
+{
+  "name": "myproject",
+  "dependencies": {
+    "semantic-ui-button": "~2.2.13"
+  }
+}

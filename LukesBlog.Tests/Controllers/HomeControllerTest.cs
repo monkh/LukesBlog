@@ -13,7 +13,7 @@ namespace LukesBlog.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void Index_has_view()
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -26,7 +26,7 @@ namespace LukesBlog.Tests.Controllers
         }
 
         [TestMethod]
-        public void About()
+        public void About_has_view()
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -35,11 +35,11 @@ namespace LukesBlog.Tests.Controllers
             ViewResult result = controller.About() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void Contact()
+        public void Contact_has_view()
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -50,5 +50,46 @@ namespace LukesBlog.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void Pictures_has_view()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Pictures() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Praise_has_view()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Praise() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Projects_has_view()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Projects() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+
     }
 }

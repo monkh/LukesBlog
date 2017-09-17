@@ -25,6 +25,7 @@ namespace LukesBlog
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/bower_components/semantic-ui-button/button.css",
+                      "~/bower_components/semantic-ui-icon/icon.css",
                       "~/Content/site.css"));
         }
     }

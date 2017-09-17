@@ -166,6 +166,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="DataAccessLayer\Models\BlogPost.cs" />
+    <Compile Include="Migrations\201709171556505_InitialCommit.cs" />
+    <Compile Include="Migrations\201709171556505_InitialCommit.Designer.cs">
+      <DependentUpon>201709171556505_InitialCommit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +181,10 @@
     <Content Include="bower_components\semantic-ui-button\button.css" />
     <Content Include="bower_components\semantic-ui-button\button.min.css" />
     <Content Include="bower_components\semantic-ui-button\package.js" />
+    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.svg" />
+    <Content Include="bower_components\semantic-ui-icon\icon.css" />
+    <Content Include="bower_components\semantic-ui-icon\icon.min.css" />
+    <Content Include="bower_components\semantic-ui-icon\package.js" />
     <Content Include="Content\images\marshalexample1.png" />
     <Content Include="Content\images\marshalexample2.png" />
     <Content Include="Content\images\marshalexample3.png" />
@@ -315,6 +324,18 @@
     <Content Include="bower_components\semantic-ui-button\package.json" />
     <Content Include="bower_components\semantic-ui-button\README.md" />
     <Content Include="bower_components\semantic-ui-button\RELEASE-NOTES.md" />
+    <Content Include="bower_components\semantic-ui-icon\.bower.json" />
+    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.eot" />
+    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.ttf" />
+    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.woff" />
+    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.woff2" />
+    <Content Include="bower_components\semantic-ui-icon\bower.json" />
+    <Content Include="bower_components\semantic-ui-icon\composer.json" />
+    <Content Include="bower_components\semantic-ui-icon\package.json" />
+    <Content Include="bower_components\semantic-ui-icon\README.md" />
+    <Content Include="bower_components\semantic-ui-icon\RELEASE-NOTES.md" />
+    <Content Include="connectionstring.Debug.config" />
+    <Content Include="connectionstring.Release.config" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Pictures.cshtml" />
     <Content Include="Views\Home\Praise.cshtml" />
@@ -323,6 +344,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709171556505_InitialCommit.resx">
+      <DependentUpon>201709171556505_InitialCommit.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

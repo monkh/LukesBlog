@@ -18,6 +18,16 @@ namespace LukesBlog.DataAccessLayer
                 .HasRequired<BlogPost>(c => c.CurrentBlogPost)
                 .WithMany(bp => bp.Comments)
                 .HasForeignKey<int>(c => c.BlogPostID);
+
+            modelBuilder.Entity<BlogPost>()
+                .Property(m => m.Authored)
+                .IsOptional();
+
+            modelBuilder.Entity<BlogPost>()
+                .Property(t => t.Body)
+                .HasMaxLength(4000);
+
+
         }
     }
 }

@@ -12,6 +12,14 @@ namespace LukesBlog.DataAccessLayer.Repositories
         {
             return DbSet.Where(p => p.ID.Equals(id)).ToList();
         }
+
+        public List<BlogPost> GetLatest3AuthoredPosts()
+        {
+            return DbSet.Where(p => p.Authored.Equals(true))
+                        .OrderByDescending(p => p.DatePosted)
+                        .Take(3)
+                        .ToList();
+        }
         
     }
 }

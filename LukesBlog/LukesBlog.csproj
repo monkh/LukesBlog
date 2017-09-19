@@ -158,8 +158,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccessLayer\BlogDBContext.cs" />
+    <Compile Include="DataAccessLayer\CustomDateFormatProvider.cs" />
     <Compile Include="DataAccessLayer\Repositories\BlogPostRepository.cs" />
     <Compile Include="DataAccessLayer\Repositories\Repository.cs" />
     <Compile Include="Global.asax.cs">
@@ -169,6 +171,30 @@
     <Compile Include="Migrations\201709171556505_InitialCommit.cs" />
     <Compile Include="Migrations\201709171556505_InitialCommit.Designer.cs">
       <DependentUpon>201709171556505_InitialCommit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709180828541_addedAuthoredProperty.cs" />
+    <Compile Include="Migrations\201709180828541_addedAuthoredProperty.Designer.cs">
+      <DependentUpon>201709180828541_addedAuthoredProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709180835349_MadeAuthoredOptional.cs" />
+    <Compile Include="Migrations\201709180835349_MadeAuthoredOptional.Designer.cs">
+      <DependentUpon>201709180835349_MadeAuthoredOptional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709180918580_AddedMaxLengths.cs" />
+    <Compile Include="Migrations\201709180918580_AddedMaxLengths.Designer.cs">
+      <DependentUpon>201709180918580_AddedMaxLengths.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709180921396_AddedBodyMaxLengths.cs" />
+    <Compile Include="Migrations\201709180921396_AddedBodyMaxLengths.Designer.cs">
+      <DependentUpon>201709180921396_AddedBodyMaxLengths.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709180928461_AddedBodyMaxLengths_2.cs" />
+    <Compile Include="Migrations\201709180928461_AddedBodyMaxLengths_2.Designer.cs">
+      <DependentUpon>201709180928461_AddedBodyMaxLengths_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709191043252_addedTags123andimgsrc.cs" />
+    <Compile Include="Migrations\201709191043252_addedTags123andimgsrc.Designer.cs">
+      <DependentUpon>201709191043252_addedTags123andimgsrc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -315,6 +341,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />
@@ -341,6 +368,11 @@
     <Content Include="Views\Home\Praise.cshtml" />
     <Content Include="Views\Home\Projects.cshtml" />
     <None Include="Properties\PublishProfiles\LukesBlog - Web Deploy.pubxml" />
+    <Content Include="Views\BlogPosts\Create.cshtml" />
+    <Content Include="Views\BlogPosts\Delete.cshtml" />
+    <Content Include="Views\BlogPosts\Details.cshtml" />
+    <Content Include="Views\BlogPosts\Edit.cshtml" />
+    <Content Include="Views\BlogPosts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -348,6 +380,24 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709171556505_InitialCommit.resx">
       <DependentUpon>201709171556505_InitialCommit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709180828541_addedAuthoredProperty.resx">
+      <DependentUpon>201709180828541_addedAuthoredProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709180835349_MadeAuthoredOptional.resx">
+      <DependentUpon>201709180835349_MadeAuthoredOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709180918580_AddedMaxLengths.resx">
+      <DependentUpon>201709180918580_AddedMaxLengths.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709180921396_AddedBodyMaxLengths.resx">
+      <DependentUpon>201709180921396_AddedBodyMaxLengths.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709180928461_AddedBodyMaxLengths_2.resx">
+      <DependentUpon>201709180928461_AddedBodyMaxLengths_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709191043252_addedTags123andimgsrc.resx">
+      <DependentUpon>201709191043252_addedTags123andimgsrc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

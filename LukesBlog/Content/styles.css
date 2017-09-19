@@ -19,7 +19,9 @@ body {
     flex-direction: column;
 }
 
-section {
+body section {
+    display: flex;
+    flex-direction: row-reverse;
     position: relative;
     margin-top: 30px;
     max-width: 1024px;
@@ -145,6 +147,7 @@ header {
     width: 100%;
     max-width: 1024px;
     position: relative;
+    box-sizing: content-box;
 }
 
 header .logo {
@@ -276,12 +279,12 @@ header #contact:hover {
 }
 
 .sidebar {
-    position: absolute;
+    /*position: absolute;*/
     margin-left: auto;
     width: 30%;
     height: 100%;
-    right: 0;
-    left: auto;
+    /*right: 0;
+    left: auto;*/
 }
 
 .sidebar .avatar {
@@ -303,6 +306,7 @@ header #contact:hover {
     flex-flow: row wrap;
     justify-content: space-around;
     width: 210px;
+    box-sizing: unset;
 }
 
 .sidebar .item {
@@ -314,6 +318,8 @@ header #contact:hover {
     text-align: center;
     color: white;
     border-radius: 25px;
+    box-sizing: unset;
+    line-height: 0.8em;
 }
 
 .sidebar .item:nth-child(1),

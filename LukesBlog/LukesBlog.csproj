@@ -204,13 +204,6 @@
     <Content Include="20160418_223643_original.jpg" />
     <Content Include="background.jpg" />
     <Content Include="background1.jpg" />
-    <Content Include="bower_components\semantic-ui-button\button.css" />
-    <Content Include="bower_components\semantic-ui-button\button.min.css" />
-    <Content Include="bower_components\semantic-ui-button\package.js" />
-    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.svg" />
-    <Content Include="bower_components\semantic-ui-icon\icon.css" />
-    <Content Include="bower_components\semantic-ui-icon\icon.min.css" />
-    <Content Include="bower_components\semantic-ui-icon\package.js" />
     <Content Include="Content\images\marshalexample1.png" />
     <Content Include="Content\images\marshalexample2.png" />
     <Content Include="Content\images\marshalexample3.png" />
@@ -253,22 +246,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />
-    <Content Include="bower_components\semantic-ui-button\.bower.json" />
-    <Content Include="bower_components\semantic-ui-button\bower.json" />
-    <Content Include="bower_components\semantic-ui-button\composer.json" />
-    <Content Include="bower_components\semantic-ui-button\package.json" />
-    <Content Include="bower_components\semantic-ui-button\README.md" />
-    <Content Include="bower_components\semantic-ui-button\RELEASE-NOTES.md" />
-    <Content Include="bower_components\semantic-ui-icon\.bower.json" />
-    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.eot" />
-    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.ttf" />
-    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.woff" />
-    <Content Include="bower_components\semantic-ui-icon\assets\fonts\icons.woff2" />
-    <Content Include="bower_components\semantic-ui-icon\bower.json" />
-    <Content Include="bower_components\semantic-ui-icon\composer.json" />
-    <Content Include="bower_components\semantic-ui-icon\package.json" />
-    <Content Include="bower_components\semantic-ui-icon\README.md" />
-    <Content Include="bower_components\semantic-ui-icon\RELEASE-NOTES.md" />
     <Content Include="connectionstring.Debug.config" />
     <Content Include="connectionstring.Release.config" />
     <None Include="packages.config" />

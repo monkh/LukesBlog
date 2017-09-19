@@ -33,16 +33,16 @@
             </div>
         </div>
         <h1>Luke's Blog</h1>
-        <nav id="nav_bar">
+        <nav id="ui fixed top menu sticky nav_bar ">
             <div class="bar"></div>
             <div class="back_bar"></div>
             <ul class="menu">
-                <li id="blog" class="active">@Html.ActionLink("Blog","Index","Home")</li>
-                <li id="about">             @Html.ActionLink("CV", "About", "Home")</li>
-                <li id="cv">                @Html.ActionLink("Pictures", "Pictures", "Home")</li>
-                <li id="projects">          @Html.ActionLink("Projects", "Projects", "Home")</li>
-                <li id="praise">            @Html.ActionLink("Praise", "Praise", "Home")</li>
-                <li id="contact">           @Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li id="blog" class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">              @Html.ActionLink("Blog","Index","Home")</li>
+                <li id="about" class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")">             @Html.ActionLink("CV", "About", "Home")</li>
+                <li id="cv" class="@(ViewContext.RouteData.Values["Action"].ToString() == "Pictures" ? "active" : "")">             @Html.ActionLink("Pictures", "Pictures", "Home")</li>
+                <li id="projects" class="@(ViewContext.RouteData.Values["Action"].ToString() == "Projects" ? "active" : "")">       @Html.ActionLink("Projects", "Projects", "Home")</li>
+                <li id="praise" class="@(ViewContext.RouteData.Values["Action"].ToString() == "Praise" ? "active" : "")">           @Html.ActionLink("Praise", "Praise", "Home")</li>
+                <li id="contact" class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">         @Html.ActionLink("Contact", "Contact", "Home")</li>
             </ul>
         </nav>
     </header>

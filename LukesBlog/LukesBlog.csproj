@@ -204,9 +204,9 @@
     <Content Include="20160418_223643_original.jpg" />
     <Content Include="background.jpg" />
     <Content Include="background1.jpg" />
-    <Content Include="Content\images\marshalexample1.png" />
-    <Content Include="Content\images\marshalexample2.png" />
-    <Content Include="Content\images\marshalexample3.png" />
+    <Content Include="Content\images\marshalexample1_.png" />
+    <Content Include="Content\images\marshalexample2_.png" />
+    <Content Include="Content\images\marshalexample3_.png" />
     <Content Include="Content\pictures\data.jpg" />
     <Content Include="Content\pictures\debug.jpg" />
     <Content Include="Content\pictures\network.jpg" />

@@ -549,3 +549,124 @@ footer svg path {
         width: 100%;
     }
 }
+
+
+
+@media screen and (max-width: 740px) {
+
+    .bar {
+        visibility: hidden;
+    }
+
+    header ul {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    header li {
+        padding: 3%;
+        min-width: 99px;
+        margin-right: 0px;
+    }
+
+    .sidebar {
+        position: relative;
+        margin-left: 30%;
+    }
+
+    .sidebar .tags {
+        visibility: hidden;
+        flex-flow: nowrap !important;
+        margin: 0px !important;
+    }
+
+    body section {
+        display: block !important;
+    }
+
+
+    header #blog:hover {
+        background: #405abb;
+        height: 60px !important;
+    }
+
+    header #about:hover {
+        background: #5740bb;
+        height: 60px !important;
+    }
+
+    header #cv:hover {
+        background: #8940bb;
+        height: 60px !important;
+    }
+
+    header #projects:hover {
+        background: #ba40bb;
+        height: 60px !important;
+    }
+
+    header #praise:hover {
+        background: #bb408b;
+        height: 60px !important;
+    }
+
+    header #contact:hover {
+        background: #bb405a;
+        height: 60px !important;
+    }
+
+
+    header #blog .active {
+        background: #405abb;
+        height: 70px !important;
+    }
+
+    header #about .active {
+        background: #5740bb;
+        height: 60px !important;
+    }
+
+    header #cv .active {
+        background: #8940bb;
+        height: 60px !important;
+    }
+
+    header #projects .active {
+        background: #ba40bb;
+        height: 60px !important;
+    }
+
+    header #praise .active {
+        background: #bb408b;
+        height: 60px !important;
+    }
+
+    header #contact .active {
+        background: #bb405a;
+        height: 60px !important;
+    }
+
+    header .active {
+        height: 60px;
+    }
+
+    #container {
+        width: 100%;
+        padding-left: 5px
+    }
+}
+
+
+
+@media screen and (max-width: 538px) {
+    header li {
+        padding: 0.5% !important;
+    }
+
+    #container img {
+        visibility: hidden;
+        height: 0px;
+        width: 0px;
+    }
+
+}

@@ -250,7 +250,6 @@
     <Content Include="connectionstring.Release.config" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Pictures.cshtml" />
-    <Content Include="Views\Home\Praise.cshtml" />
     <Content Include="Views\Home\Projects.cshtml" />
     <None Include="Properties\PublishProfiles\LukesBlog - Web Deploy.pubxml" />
     <Content Include="Views\BlogPosts\Create.cshtml" />
@@ -258,6 +257,7 @@
     <Content Include="Views\BlogPosts\Details.cshtml" />
     <Content Include="Views\BlogPosts\Edit.cshtml" />
     <Content Include="Views\BlogPosts\Index.cshtml" />
+    <Content Include="Views\Home\Skills.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

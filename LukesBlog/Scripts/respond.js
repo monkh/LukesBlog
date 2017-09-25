@@ -213,7 +213,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 			return ret;
 		},
 		
-		//cached container for 1em value, populated the first time it's needed 
+		//cached lvcontainer for 1em value, populated the first time it's needed 
 		eminpx,
 		
 		//enable/disable styles

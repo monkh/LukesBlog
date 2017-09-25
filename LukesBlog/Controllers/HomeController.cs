@@ -39,7 +39,7 @@ namespace LukesBlog.Controllers
             return View();
         }
 
-        public ActionResult Praise()
+        public ActionResult Skills()
         {
             return View();
         }

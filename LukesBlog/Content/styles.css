@@ -27,19 +27,19 @@ body section {
     max-width: 1024px;
 }
 
-#container {
+#lvcontainer {
     width: 65%;
 }
 
-#container h1 {
+#lvcontainer h1 {
     text-align: center;
     font-size: 32px;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
-#container .details,
-#container .tags {
+#lvcontainer .details,
+#lvcontainer .tags {
     display: flex;
     font-size: 16px;
     white-space: nowrap;
@@ -47,55 +47,55 @@ body section {
     align-items: center;
 }
 
-#container .date {
+#lvcontainer .date {
     padding-right: 12px;
 }
 
-#container .details {
+#lvcontainer .details {
     max-width: 500px;
     margin: auto;
 }
 
-#container .tags {
+#lvcontainer .tags {
     justify-content: space-between;
     width: 100%;
 }
 
-#container .tags svg:nth-child(1) {
+#lvcontainer .tags svg:nth-child(1) {
     fill: #943395;
 }
 
-#container .tags svg:nth-child(3) {
+#lvcontainer .tags svg:nth-child(3) {
     fill: #6D3395;
 }
 
-#container .tags svg:nth-child(5) {
+#lvcontainer .tags svg:nth-child(5) {
     fill: #95336F;
 }
 
-#container .tinygraphic {
+#lvcontainer .tinygraphic {
     margin-left: 15px;
     margin-right: 15px;
     fill: #334895;
 }
 
-#container span {
+#lvcontainer span {
     font-size: 14px;
     float: none;
     text-overflow: ellipsis;
 }
 
-#container img {
+#lvcontainer img {
     float: left;
     margin: 15px;
 }
 
-#container .rightimg {
+#lvcontainer .rightimg {
     float: right;
     margin: 15px;
 }
 
-#container .content {
+#lvcontainer .lvcontent {
     position: relative;
     margin: 30px 0;
     padding-bottom: 20px;
@@ -107,7 +107,7 @@ body section {
     border-left-width: 0;
 }
 
-#container .content .gallery {
+#lvcontainer .lvcontent .gallery {
     display: flex;
     justify-content: space-around;
     height: auto;
@@ -118,20 +118,20 @@ body section {
     border-radius: 5px;
 }
 
-#container .content .gallery .label {
+#lvcontainer .lvcontent .gallery .label {
     display: flex;
     justify-content: center;
     font-size: 10px;
 }
 
-#container .content .gallery .pic img {
+#lvcontainer .lvcontent .gallery .pic img {
     border-radius: 5px;
     cursor: pointer;
     max-height: 160px;
     max-width: 160px;
 }
 
-#container .readme {
+#lvcontainer .readme {
     position: absolute;
     right: 0;
 }
@@ -403,16 +403,19 @@ header #contact:hover {
     margin-bottom: 15px;
 }
 
-footer {
-    position: absolute;
+section footer {
+    /*position: absolute;*/
+    display: flex;
     padding-top: 2px;
     height: 52px;
     width: 200px;
     bottom: 0;
+    flex-direction: row-reverse;
+    direction: rtl;
 }
 
 footer .logo {
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     right: 0;
     margin-left: auto;
@@ -650,7 +653,7 @@ footer svg path {
         height: 60px;
     }
 
-    #container {
+    #lvcontainer {
         width: 100%;
         padding-left: 5px
     }
@@ -663,7 +666,7 @@ footer svg path {
         padding: 0.5% !important;
     }
 
-    #container img {
+    #lvcontainer img {
         visibility: hidden;
         height: 0px;
         width: 0px;

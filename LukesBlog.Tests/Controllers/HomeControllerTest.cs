@@ -71,7 +71,7 @@ namespace LukesBlog.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Praise() as ViewResult;
+            ViewResult result = controller.Skills() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

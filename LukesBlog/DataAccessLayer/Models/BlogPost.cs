@@ -84,7 +84,7 @@ namespace LukesBlog.DataAccessLayer.Models
                 </svg>
             </div>
         </div>
-        <div class='content'>
+        <div class='lvcontent'>
             <img src='{this.imgsrc}' alt='Good Times' height='100' width='194' class='rightimg'>
             <span>
                 {this.Body}

@@ -199,6 +199,12 @@ header li {
     color: white;
 }
 
+header li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 header .menu {
     height: 70px;
 }
